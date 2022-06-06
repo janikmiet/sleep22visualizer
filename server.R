@@ -34,7 +34,7 @@ function(input, output, session) {
     mapdata <- sp::merge(europe_spdf, dataset(), by.x="NAME", by.y="location_name")
     
     ## Create a color palette with handmade bins.
-    mybins <- c(0,800,1600,2400,3200,Inf)
+    mybins <- c(0,1000,2000,3000,4000,Inf)
     mypalette <- colorBin( palette="YlOrBr", domain=mapdata@data$POP2005, na.color="transparent", bins=mybins)
     
     # Prepare the text for tooltips:
@@ -45,7 +45,8 @@ function(input, output, session) {
       "Direct: ", round(mapdata@data$patient_direct_cost, 0), "€ <br/>",
       "Non-healthcare: ", round(mapdata@data$patient_nonhealthcare_cost, 0), "€ <br/>",
       "Productivity: ", round(mapdata@data$patient_productivity_cost, 0), "€<br/>",
-      "Total: ", round(mapdata@data$patient_total_cost, 0), "€", 
+      "Total: ", round(mapdata@data$patient_total_cost, 0), "€<br/>", 
+      # '<a href="https://janimiettinen.shinyapps.io/sleepapneacalculator/?location_name=',mapdata@data$NAME,'">Open calculator</a> ', ## TODO need or no need
       sep="") %>%
       lapply(htmltools::HTML)
     
@@ -64,13 +65,13 @@ function(input, output, session) {
                   stroke=TRUE, 
                   fillOpacity = 0.9, #0.5
                   label = mytext,
-                  labelOptions = labelOptions( 
+                  labelOptions = labelOptions(
                     style = list("font-weight" = "normal", padding = "3px 8px"), 
                     textsize = "13px", 
                     direction = "auto"
                   )) %>%
       addLegend(pal=mypalette, 
-                values=~patient_total_cost, opacity=0.9, title = "Patient annual cost", position = "topleft" )
+                values=~patient_total_cost, opacity=0.9, title = "Patient annual cost", position = "topleft" ) 
     
   })
   
