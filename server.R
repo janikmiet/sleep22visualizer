@@ -65,13 +65,21 @@ function(input, output, session) {
                   stroke=TRUE, 
                   fillOpacity = 0.9, #0.5
                   label = mytext,
+                  popup = paste0(
+                    "<b>Country: </b>"
+                    , mapdata@data$NAME
+                    , "<br>"
+                    , "<a href='"
+                    , "https://janimiettinen.shinyapps.io/sleepapneacalculator/?location_name=",mapdata@data$NAME
+                    , "' target='_blank'>"
+                    , "Open the calculator</a>"  ),
                   labelOptions = labelOptions(
                     style = list("font-weight" = "normal", padding = "3px 8px"), 
                     textsize = "13px", 
                     direction = "auto"
                   )) %>%
       addLegend(pal=mypalette, 
-                values=~patient_total_cost, opacity=0.9, title = "Patient annual cost", position = "topleft" ) 
+                values=~patient_total_cost, opacity=0.9, title = "Patient annual cost, €", position = "topleft" ) 
     
   })
   

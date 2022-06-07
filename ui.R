@@ -27,8 +27,7 @@ navbarPage("Sleep Apnea Cost", id="nav",
                                       
                                       h2("Sleep apnea cost calculation"),
                                       
-                                      tags$p("Application estimates sleep apnea costs in 48 countries for 15-74 years old population. Select money index correction method and click countries from the map for more detailed information."),
-                                      
+                                      tags$p("Application visualizes sleep apnea costs in 45 countries for 30-69 years old population. Hovering a cursor in a map shows detailed information of the costs. Clicking the country, link to the calculation popup opens."),
                                       selectInput(inputId = "dataset", label = "Money index correction", choices = vars),
                                       # selectInput(inputId = "size", label = "Size", choices = vars, selected = "adultpop"),
                                       # conditionalPanel("input.color == 'superzip' || input.size == 'superzip'",
@@ -41,7 +40,7 @@ navbarPage("Sleep Apnea Cost", id="nav",
                         ),
                         
                         tags$div(id="cite",
-                                 'Data compiled from ', tags$em('IHME GBD DATA <http://ghdx.healthdata.org/> BY CC BY-NC-ND 4.0 LICENCE'), ' and estimation method delivered from Armeni et al. (2019) Cost-of-illness study of Obstructive Sleep Apnea Syndrome (OSAS) in Italy.'
+                                 'Data compiled from ', tags$em('IHME GBD DATA <http://ghdx.healthdata.org/> BY CC BY-NC-ND 4.0 LICENCE'), ' and estimation method delivered from Armeni et al. (2019) Cost-of-illness study of Obstructive Sleep Apnea Syndrome (OSAS) in Italy. Sleep apnea prevalences (OSA) are collected from Benjafield et al. article.'
                         )
                     )
            ),
@@ -145,7 +144,7 @@ navbarPage("Sleep Apnea Cost", id="nav",
            # ),
            
            tabPanel("About",
-                    tags$p("Application estimates sleep apnea costs in 48 countries for 15-74 years old population. Data is compiled from IHME GBD DATA <http://ghdx.healthdata.org/> BY CC BY-NC-ND 4.0 LICENCE and estimation method delivered from Armeni et al. (2019) Cost-of-illness study of Obstructive Sleep Apnea Syndrome (OSAS) in Italy -article. For more information of our research project visit project website https://research.janimiettinen.fi/material/sleep22/")
+                    tags$p("Application estimates sleep apnea costs in 45 countries for 30-69 years old population. Data is compiled from IHME GBD DATA <http://ghdx.healthdata.org/> BY CC BY-NC-ND 4.0 LICENCE and sleep apnea prevalences from Benjafield et al. (2019) Estimation of the global prevalence and burden of obstructive sleep apnoea: a literature-based analysis. Estimation method delivered from Armeni et al. (2019) Cost-of-illness study of Obstructive Sleep Apnea Syndrome (OSAS) in Italy -article. For more information of our research project visit project website https://research.janimiettinen.fi/material/sleep22/")
            )
            
            # conditionalPanel("false", icon("crosshair"))
