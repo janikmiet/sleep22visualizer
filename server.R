@@ -40,7 +40,7 @@ function(input, output, session) {
     # Prepare the text for tooltips:
     mytext <- paste(
       "<b> ", mapdata@data$NAME,"</b> <br/>", 
-      "Population (15-74yrs): ", round(mapdata@data$pop_female + mapdata@data$pop_male, 0),"<br/>", 
+      "Population (30-69yrs): ", round(mapdata@data$pop_female + mapdata@data$pop_male, 0),"<br/>", 
       "<b> Cost per patient </b> <br/>",
       "Direct: ", round(mapdata@data$patient_direct_cost, 0), "€ <br/>",
       "Non-healthcare: ", round(mapdata@data$patient_nonhealthcare_cost, 0), "€ <br/>",
