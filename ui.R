@@ -27,7 +27,7 @@ navbarPage("Sleep Apnea Cost", id="nav",
                                       
                                       h2("Sleep apnea cost calculation"),
                                       
-                                      tags$p("Application visualizes sleep apnea costs in 45 countries for 30-69 years old population. Hovering a cursor in a map shows detailed information of the costs. Clicking the country, link to the calculation popup opens."),
+                                      tags$p("Application visualizes sleep apnea costs in 45 countries for 30-69 years old population. Hovering a cursor in a map shows detailed information of the costs. By clicking the country, link to the calculation popup opens."),
                                       selectInput(inputId = "dataset", label = "Money index correction", choices = vars),
                                       # selectInput(inputId = "size", label = "Size", choices = vars, selected = "adultpop"),
                                       # conditionalPanel("input.color == 'superzip' || input.size == 'superzip'",
