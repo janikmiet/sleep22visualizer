@@ -9,17 +9,28 @@ function(input, output, session) {
   
   dataset <- reactive({
     if(input$dataset == "No correction"){
-     d <- slapnea22 
+     d <- slapnea22 %>% 
+       mutate(
+         pop_both = round(pop_both, -1),
+         direct_cost = round(direct_cost, -1),
+         direct_non_healthcare_cost = round(direct_non_healthcare_cost, -1),
+         productivity_lost_cost = round(productivity_lost_cost, -1),
+         patient_direct_cost = round(patient_direct_cost, -1),
+         patient_nonhealthcare_cost = round(patient_nonhealthcare_cost, -1),
+         patient_productivity_cost = round(patient_productivity_cost, -1),
+         patient_total_cost = round(patient_total_cost, -1)
+       )
     }else{
       d <- slapnea22 %>% 
         mutate(
-          direct_cost = index * direct_cost,
-          direct_non_healthcare_cost = index * direct_non_healthcare_cost,
-          productivity_lost_cost = index * productivity_lost_cost,
-          patient_direct_cost = index * patient_direct_cost,
-          patient_nonhealthcare_cost = index * patient_nonhealthcare_cost,
-          patient_productivity_cost = index * patient_productivity_cost,
-          patient_total_cost = index * patient_total_cost
+          pop_both = round(pop_both, -1),
+          direct_cost = round(index * direct_cost, -1),
+          direct_non_healthcare_cost = round(index * direct_non_healthcare_cost, -1),
+          productivity_lost_cost = round(index * productivity_lost_cost, -1),
+          patient_direct_cost = round(index * patient_direct_cost, -1),
+          patient_nonhealthcare_cost = round(index * patient_nonhealthcare_cost, -1),
+          patient_productivity_cost = round(index * patient_productivity_cost, -1),
+          patient_total_cost = round(index * patient_total_cost, -1)
         )
     }
     return(d)
@@ -41,7 +52,7 @@ function(input, output, session) {
     # Prepare the text for tooltips:
     mytext <- paste(
       "<b> ", mapdata@data$NAME,"</b> <br/>", 
-      "Population (15-74yrs): ", round(mapdata@data$pop_female + mapdata@data$pop_male, 0),"<br/>", 
+      "Population (15-74yrs): ", round(mapdata@data$pop_female + mapdata@data$pop_male, -1),"<br/>", 
       "<b> Cost per patient </b> <br/>",
       "Direct: ", round(mapdata@data$patient_direct_cost, 0), "€ <br/>",
       "Non-healthcare: ", round(mapdata@data$patient_nonhealthcare_cost, 0), "€ <br/>",
@@ -119,17 +130,17 @@ function(input, output, session) {
   
   output$slapneatable <- DT::renderDataTable({
     df <- dataset() %>%
-      mutate(pop_female = round(pop_female,0),
-             pop_male = round(pop_male,0),
-             direct_cost = round(direct_cost,0),
-             direct_non_healthcare_cost = round(direct_non_healthcare_cost,0),
-             productivity_lost_cost = round(productivity_lost_cost,0),
-             absolute_value_severe_moderate = round(absolute_value_severe_moderate,0),
-             absolute_value_mild = round(absolute_value_mild,0),
-             patient_direct_cost = round(patient_direct_cost,0),
-             patient_nonhealthcare_cost = round(patient_nonhealthcare_cost,0),
-             patient_productivity_cost = round(patient_productivity_cost,0),
-             patient_total_cost = round(patient_total_cost,0)
+      mutate(pop_female = round(pop_female,-1),
+             pop_male = round(pop_male,-1),
+             direct_cost = round(direct_cost,-1),
+             direct_non_healthcare_cost = round(direct_non_healthcare_cost,-1),
+             productivity_lost_cost = round(productivity_lost_cost,-1),
+             absolute_value_severe_moderate = round(absolute_value_severe_moderate,-1),
+             absolute_value_mild = round(absolute_value_mild,-1),
+             patient_direct_cost = round(patient_direct_cost,-1),
+             patient_nonhealthcare_cost = round(patient_nonhealthcare_cost,-1),
+             patient_productivity_cost = round(patient_productivity_cost,-1),
+             patient_total_cost = round(patient_total_cost,-1)
              )
     # action <- DT::dataTableAjax(session, df, outputId = "ziptable")
 
