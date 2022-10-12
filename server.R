@@ -11,7 +11,6 @@ function(input, output, session) {
     if(input$dataset == "No correction"){
      d <- slapnea22 %>% 
        mutate(
-         pop_both = round(pop_both, -1),
          direct_cost = round(direct_cost, -1),
          direct_non_healthcare_cost = round(direct_non_healthcare_cost, -1),
          productivity_lost_cost = round(productivity_lost_cost, -1),
@@ -23,7 +22,6 @@ function(input, output, session) {
     }else{
       d <- slapnea22 %>% 
         mutate(
-          pop_both = round(pop_both, -1),
           direct_cost = round(index * direct_cost, -1),
           direct_non_healthcare_cost = round(index * direct_non_healthcare_cost, -1),
           productivity_lost_cost = round(index * productivity_lost_cost, -1),
