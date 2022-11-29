@@ -26,7 +26,7 @@ navbarPage("Sleep Apnea Cost", id="nav",
                                       
                                       h2("Sleep apnea cost top-down estimation"),
                                       
-                                      tags$p("Hovering a cursor in a map shows detailed information of the costs. By clicking the country, link to the calculation popup opens."),
+                                      tags$p("Hovering a cursor in a map shows detailed information of the costs. Click the country to open the calculator link."),
                                       selectInput(inputId = "dataset", label = "Money index correction", choices = vars),
                                       plotOutput("barClasses", height = 800, width = 400),
                         ),
