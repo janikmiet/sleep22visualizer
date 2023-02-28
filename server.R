@@ -80,7 +80,8 @@ function(input, output, session) {
                     , mapdata@data$NAME
                     , "<br>"
                     , "<a href='"
-                    , "https://janimiettinen.shinyapps.io/sleepapneacalculator/?location_name=",mapdata@data$NAME
+                    , "https://costs.sleeprevolution.eu/calculator/?location_name=",mapdata@data$NAME
+                    # , "https://janimiettinen.shinyapps.io/sleepapneacalculator/?location_name=",mapdata@data$NAME
                     , "' target='_blank'>"
                     , "Open the calculator</a>"  ),
                   labelOptions = labelOptions(
