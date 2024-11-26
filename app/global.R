@@ -1,8 +1,10 @@
+library(shiny)
 library(dplyr)
 library(hrbrthemes)
 library(tidyr)
 library(ggplot2)
-library(tidyverse)
+library(leaflet)
+library(here)
 library(DT)
 library(rhandsontable)
 

@@ -1,2 +1,2 @@
 library(rsconnect)
-rsconnect::deployApp(here::here(), appTitle = "SleepApneaCost")
+rsconnect::deployApp("app/", appTitle = "SleepApneaCost")
