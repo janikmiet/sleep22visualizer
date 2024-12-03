@@ -9,8 +9,8 @@ LABEL maintainer="Jani Miettinen <jani.miettinen@uef.fi>"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     pandoc \
-    libcurl4-gnutls-dev \
     libcairo2-dev \
+    libnlopt-dev \
     libxt-dev \
     libssl-dev \
     libssh2-1-dev \
@@ -22,10 +22,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     netcdf-bin \
     libharfbuzz-dev \
     libfribidi-dev \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Step 3: Install R packages needed for the app
-RUN R -e "install.packages(c('shiny', 'raster', 'leaflet', 'here', 'hrbrthemes', 'ggplot2', 'dplyr', 'tidyr', 'DT', 'rhandsontable'), dependencies = TRUE, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'raster', 'leaflet', 'here', 'hrbrthemes', 'ggplot2', 'dplyr', 'tidyr', 'DT', 'rhandsontable'), dependencies = TRUE, repos=c('https://cran.rediris.org/', 'https://cloud.r-project.org/'))"
 
 # Create the shiny user and group
 RUN useradd -r -m shiny && \
@@ -37,7 +38,7 @@ WORKDIR /srv/shiny-server/app
 COPY app /srv/shiny-server/app
 
 # Step 5: Set permissions for the Shiny server
-#RUN chown -R shiny:shiny /srv/shiny-server
+RUN chown -R shiny:shiny /srv/shiny-server/app
 
 # Step 6: Expose the port where the app will run
 EXPOSE 3838
