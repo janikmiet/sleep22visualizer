@@ -6,6 +6,8 @@
  
 - Dockerhub image: <https://hub.docker.com/repository/docker/janikmiet/sleeprevolution_visualization/general>
 
+![](visualizer.png)
+
 
 # Installation / App Launch
 
