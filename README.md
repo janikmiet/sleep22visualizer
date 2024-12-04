@@ -6,4 +6,6 @@ Working app available: <https://janimiettinen.shinyapps.io/sleepapneacost/>
 or 
 dockerhub image: <https://hub.docker.com/repository/docker/janikmiet/sleeprevolution_visualization/general>
 
-![](app/img/alllogos.png) <img src="app/img/uef.png" style="width:4.0%" />
+![](app/img/alllogos.png) 
+<br>
+<img src="app/img/uef.png" style="width:4.0%" />
